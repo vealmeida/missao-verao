@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Missão Verão">
+<title>Missão Verão 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --areia:#FFF6E9;
+  --mar:#1B7FA6;
+  --mar-escuro:#0E5C7B;
+  --sol:#FFC93C;
+  --coral:#FF7A59;
+  --tinta:#33323E;
+  --branco:#FFFFFF;
+  --sombra:0 6px 0 rgba(27,127,166,.15);
+  --raio:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{
+  font-family:'Nunito',sans-serif;color:var(--tinta);
+  background:var(--areia);
+  background-image:radial-gradient(circle at 85% -5%, rgba(255,201,60,.35) 0 180px, transparent 200px);
+  min-height:100vh;padding:20px 18px 48px;max-width:480px;margin:0 auto;
+}
+h1,h2,h3,.display{font-family:'Fredoka',sans-serif}
+button{font-family:inherit;cursor:pointer;border:none}
+
+/* ---------- cabeçalho ---------- */
+.topo{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.topo .logo{font-family:'Fredoka';font-weight:700;font-size:1.25rem;color:var(--mar-escuro);letter-spacing:.3px}
+.topo .logo span{color:var(--coral)}
+.gear{background:none;font-size:1.15rem;opacity:.55;padding:6px}
+
+/* ---------- cartões ---------- */
+.card{background:var(--branco);border-radius:var(--raio);padding:22px 20px;box-shadow:var(--sombra);margin-bottom:18px}
+
+/* ---------- ecrã de registo ---------- */
+.registo h1{font-size:1.7rem;color:var(--mar-escuro);line-height:1.2;margin-bottom:8px}
+.registo p{margin-bottom:16px;line-height:1.5}
+.registo label{font-weight:800;font-size:.85rem;display:block;margin:14px 0 6px;color:var(--mar-escuro)}
+.registo input{
+  width:100%;padding:13px 14px;border:2.5px solid var(--mar);border-radius:14px;
+  font:inherit;font-weight:700;font-size:1.05rem;background:#FBFDFF;
+}
+.registo input:focus{outline:3px solid var(--sol);outline-offset:2px}
+
+/* ---------- dossier da missão ---------- */
+.dossier{position:relative;overflow:hidden;border:2.5px dashed var(--mar);}
+.carimbo{
+  position:absolute;top:14px;right:-38px;transform:rotate(38deg);
+  background:var(--coral);color:#fff;font-family:'Fredoka';font-weight:700;
+  font-size:.72rem;letter-spacing:2px;padding:5px 44px;
+}
+.dossier .eyebrow{font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mar)}
+.dossier h2{font-size:1.45rem;color:var(--mar-escuro);margin:6px 0 4px}
+.dossier .emoji{font-size:2.6rem;line-height:1;margin:8px 0 4px;display:block}
+.dossier .corpo{margin-top:10px;line-height:1.6;white-space:pre-line}
+.dossier .corpo strong{color:var(--mar-escuro)}
+.caderno-aviso{
+  margin-top:16px;background:var(--areia);border-radius:14px;padding:12px 14px;
+  font-weight:700;display:flex;gap:10px;align-items:flex-start;font-size:.92rem;line-height:1.4
+}
+.btn-principal{
+  width:100%;margin-top:18px;padding:16px;border-radius:16px;
+  background:var(--sol);color:var(--tinta);font-family:'Fredoka';font-weight:600;
+  font-size:1.15rem;box-shadow:0 5px 0 #D9A616;transition:transform .08s;
+}
+.btn-principal:active{transform:translateY(4px);box-shadow:none}
+.btn-secundario{
+  width:100%;margin-top:10px;padding:13px;border-radius:16px;background:none;
+  color:var(--mar);font-weight:800;font-size:.95rem;
+}
+.concluida-selo{
+  margin-top:16px;text-align:center;font-family:'Fredoka';font-weight:600;
+  color:var(--mar-escuro);background:#EAF6EE;border-radius:14px;padding:14px;font-size:1.05rem
+}
+
+/* ---------- mural de estrelas ---------- */
+.mural h3{color:var(--mar-escuro);font-size:1.05rem;margin-bottom:4px}
+.mural .sub{font-size:.85rem;opacity:.7;margin-bottom:14px}
+.grelha{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.dia{
+  aspect-ratio:1;border-radius:12px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-size:1.15rem;
+  background:var(--areia);border:2px solid transparent;position:relative;
+}
+.dia small{font-size:.55rem;font-weight:800;opacity:.6;position:absolute;top:3px;left:5px}
+.dia.feita{background:#FFF1C9;border-color:var(--sol)}
+.dia.hoje{border-color:var(--coral);animation:pulsa 1.6s infinite}
+.dia.trancada{opacity:.45}
+@keyframes pulsa{0%,100%{box-shadow:0 0 0 0 rgba(255,122,89,.5)}50%{box-shadow:0 0 0 7px rgba(255,122,89,0)}}
+@media (prefers-reduced-motion:reduce){.dia.hoje{animation:none}}
+
+/* ---------- celebração ---------- */
+.veu{
+  position:fixed;inset:0;background:rgba(14,92,123,.55);display:flex;
+  align-items:center;justify-content:center;padding:24px;z-index:50;
+}
+.veu .card{max-width:340px;text-align:center;margin:0}
+.veu .estrela-grande{font-size:4rem;display:block;animation:salta .7s ease}
+@keyframes salta{0%{transform:scale(0) rotate(-30deg)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.veu .estrela-grande{animation:none}}
+.veu h2{color:var(--mar-escuro);margin:8px 0 6px}
+.veu p{margin-bottom:14px;line-height:1.5}
+.hidden{display:none!important}
+.rodape{text-align:center;font-size:.75rem;opacity:.5;margin-top:6px}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="logo">🌞 Missão <span>Verão</span> 2026</div>
+  <button class="gear" id="btnGear" aria-label="Definições dos pais">⚙️</button>
+</header>
+
+<main id="app"></main>
+
+<div class="rodape">Clube Secreto das Férias · missão nova todos os dias</div>
+
+<script>
+/* =========================================================
+   DADOS DAS MISSÕES
+   Para acrescentares semanas, basta adicionar objetos a esta
+   lista seguindo o mesmo formato. A app desbloqueia 1 por dia.
+   ========================================================= */
+const MISSOES = [
+ {emoji:"🌞",titulo:"A capa",corpo:
+`Hoje começa a tua Missão Verão!
+
+No teu caderno faz uma **capa** com:
+• o teu nome;
+• um título (ex.: *Jornal das Minhas Férias*);
+• um desenho que represente este verão.
+
+No fim escreve:
+"Estou pronta para a Missão Verão!"`},
+ {emoji:"📖",titulo:"Leitura",corpo:
+`Lê **4 páginas** de um livro.
+
+Depois escreve no caderno, só em duas ou três frases:
+📚 O que aconteceu?
+😊 Qual foi a parte de que mais gostei?`},
+ {emoji:"➕",titulo:"Matemática",corpo:
+`Hoje é ginástica para o cérebro! Resolve no caderno:
+
+7 × 8 =
+9 × 6 =
+48 ÷ 6 =
+63 ÷ 9 =
+
+Se tens 3 notas de 10 €, quanto dinheiro tens?
+Se uma pizza tem 8 fatias e comem 3, quantas ficam?`},
+ {emoji:"🇬🇧",titulo:"Inglês",corpo:
+`Escreve em inglês:
+
+My name is...
+I am ... years old.
+My favourite season is...
+I like...
+This summer I want to...
+
+Desenha uma bandeira ao lado. 🎨`},
+ {emoji:"📰",titulo:"Jornal das Férias",corpo:
+`Título da página: **Notícias da Semana**
+
+Escreve:
+⭐ Melhor momento
+😂 Momento mais engraçado
+🍦 Melhor comida
+🎯 O que quero fazer na próxima semana
+
+Se quiseres, cola uma fotografia ou faz um desenho.`},
+ {emoji:"🌳",titulo:"Observadora",corpo:
+`Sai à rua ou olha pela janela. Encontra:
+
+🌸 3 flores diferentes
+🐦 2 pássaros
+🐜 1 inseto
+
+Desenha no caderno o que mais gostaste.`},
+ {emoji:"❤️",titulo:"Carta",corpo:
+`Escreve uma pequena carta para a "eu" do último dia das férias.
+
+Conta-lhe:
+• Como estás agora.
+• O que esperas viver neste verão.
+
+Guarda-a até ao fim. 🤫`},
+ {emoji:"✏️",titulo:"História",corpo:
+`Escreve uma história que comece assim:
+
+"Hoje encontrei uma porta escondida..."
+
+Podes inventar tudo!`},
+ {emoji:"📖",titulo:"Leitura",corpo:
+`Lê mais **4 páginas** do teu livro.
+
+Depois responde no caderno:
+• Quem apareceu?
+• O que achas que vai acontecer a seguir?`},
+ {emoji:"🧠",titulo:"Desafio Matemático",corpo:
+`Quanto é:
+
+15 + 27 =
+90 − 38 =
+12 × 4 =
+81 ÷ 9 =
+
+Um gelado custa 2,50 €. Quanto custam 4? 🍦`},
+ {emoji:"🕵️",titulo:"Detective de Inglês",corpo:
+`Encontra em casa **10 objetos**.
+Escreve os nomes deles em inglês.
+
+Exemplo:
+table, window, book, chair...`},
+ {emoji:"🎨",titulo:"O meu verão",corpo:
+`Desenha uma página inteira sobre o teu verão.
+
+Não vale escrever quase nada.
+Só desenhar!`},
+ {emoji:"🎮",titulo:"Descoberta",corpo:
+`Pergunta a um adulto:
+"Qual era o teu jogo favorito quando tinhas 11 anos?"
+
+Depois escreve:
+🎮 O jogo
+😊 Porque gostava dele
+🤔 Será que eu também gostaria?`},
+ {emoji:"📰",titulo:"Edição Especial",corpo:
+`Faz a segunda página do teu jornal. Pode incluir:
+
+⭐ A fotografia da semana (ou desenho)
+🏆 A maior aventura
+😂 A maior gargalhada
+📚 Livro
+🍦 Comida favorita
+🌞 Classificação da semana (0–10)`},
+];
+
+const AUTOCOLANTES = ["🌟","🐬","🍉","🏖️","🦋","🌈","🐚","🍦","⛵","🌻","🦜","🎈","🧜‍♀️","🏆"];
+
+/* ---------- armazenamento com salvaguarda ---------- */
+const memoria = {};
+const store = {
+  get(k){ try{ return localStorage.getItem(k) ?? memoria[k] ?? null; }catch(e){ return memoria[k] ?? null; } },
+  set(k,v){ memoria[k]=v; try{ localStorage.setItem(k,v); }catch(e){} },
+  del(k){ delete memoria[k]; try{ localStorage.removeItem(k); }catch(e){} }
+};
+
+/* ---------- estado ---------- */
+function hojeISO(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function diasDesde(inicioISO){
+  const [a,m,d]=inicioISO.split("-").map(Number);
+  const inicio=new Date(a,m-1,d), agora=new Date();
+  agora.setHours(0,0,0,0); inicio.setHours(0,0,0,0);
+  return Math.floor((agora-inicio)/86400000);
+}
+function feitas(){ try{ return JSON.parse(store.get("feitas")||"[]"); }catch(e){ return []; } }
+function marcarFeita(i){ const f=feitas(); if(!f.includes(i)){ f.push(i); store.set("feitas",JSON.stringify(f)); } }
+
+const app=document.getElementById("app");
+
+/* ---------- ecrã de registo ---------- */
+function ecraRegisto(){
+  app.innerHTML=`
+  <section class="card registo">
+    <h1>Bem-vinda ao Clube Secreto! 🕵️‍♀️</h1>
+    <p>Todos os dias vais receber aqui uma <strong>missão secreta</strong>. Cumpre-a no teu <strong>caderno</strong> 📓 e volta cá para ganhares a tua estrela.</p>
+    <label for="nome">O teu nome de agente</label>
+    <input id="nome" placeholder="Ex.: Alice" maxlength="20" autocomplete="off">
+    <button class="btn-principal" id="btnComecar">Aceitar a missão! 🚀</button>
+  </section>`;
+  document.getElementById("btnComecar").onclick=()=>{
+    const nome=document.getElementById("nome").value.trim()||"Agente";
+    store.set("nome",nome);
+    store.set("inicio",hojeISO());
+    render();
+  };
+}
+
+/* ---------- corpo da missão (mini-markdown seguro) ---------- */
+function fmt(t){
+  return t.replace(/&/g,"&amp;").replace(/</g,"&lt;")
+          .replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
+          .replace(/\*(.+?)\*/g,"<em>$1</em>");
+}
+
+/* ---------- ecrã principal ---------- */
+function render(){
+  const nome=store.get("nome"), inicio=store.get("inicio");
+  if(!nome||!inicio){ ecraRegisto(); return; }
+
+  const dia=Math.min(diasDesde(inicio), MISSOES.length-1); // índice da missão de hoje
+  const antesDoInicio=diasDesde(inicio)<0;
+  const f=feitas();
+  const todasFeitas=f.length>=MISSOES.length;
+
+  let dossier="";
+  if(antesDoInicio){
+    dossier=`<section class="card dossier"><span class="eyebrow">Quartel-general</span>
+      <h2>A tua primeira missão está a caminho…</h2>
+      <p class="corpo">Volta cá no dia do arranque, Agente ${nome}! 🚀</p></section>`;
+  } else if(todasFeitas){
+    dossier=`<section class="card dossier"><div class="carimbo">CONCLUÍDO</div>
+      <span class="eyebrow">Relatório final</span>
+      <span class="emoji">🏆</span>
+      <h2>Missão Verão cumprida!</h2>
+      <p class="corpo">Parabéns, Agente ${nome}! Completaste as ${MISSOES.length} missões.
+Agora abre a carta que escreveste no Dia 7… 💌</p></section>`;
+  } else {
+    // primeira missão desbloqueada ainda não feita (para recuperar dias em atraso)
+    let alvo=dia;
+    for(let i=0;i<=dia;i++){ if(!f.includes(i)){ alvo=i; break; } }
+    const m=MISSOES[alvo];
+    const jaFeitaHoje=f.includes(dia)&&alvo===dia;
+    const atrasada=alvo<dia;
+    dossier=`<section class="card dossier">
+      <div class="carimbo">TOP SECRETO</div>
+      <span class="eyebrow">${atrasada?"Missão em atraso · recupera-a!":"Missão de hoje"}</span>
+      <span class="emoji">${m.emoji}</span>
+      <h2>Dia ${alvo+1} – ${m.titulo}</h2>
+      <div class="corpo">${fmt(m.corpo)}</div>
+      <div class="caderno-aviso">📓 <span>Esta missão faz-se no <strong>caderno</strong>, no máximo uma página. Quando acabares, escreve "Missão concluída!" e volta aqui.</span></div>
+      ${ jaFeitaHoje
+        ? `<div class="concluida-selo">⭐ Missão de hoje concluída! Amanhã há mais.</div>`
+        : `<button class="btn-principal" id="btnConcluir" data-alvo="${alvo}">Missão concluída! ⭐</button>` }
+    </section>`;
+  }
+
+  // mural
+  let grelha="";
+  for(let i=0;i<MISSOES.length;i++){
+    let cls="dia", icone="🔒";
+    if(f.includes(i)){ cls+=" feita"; icone=AUTOCOLANTES[i%AUTOCOLANTES.length]; }
+    else if(!antesDoInicio&&i===dia){ cls+=" hoje"; icone=MISSOES[i].emoji; }
+    else if(!antesDoInicio&&i<dia){ icone=MISSOES[i].emoji; }
+    else { cls+=" trancada"; }
+    grelha+=`<div class="${cls}"><small>${i+1}</small>${icone}</div>`;
+  }
+
+  app.innerHTML=`${dossier}
+  <section class="card mural">
+    <h3>⭐ Mural da Agente ${nome}</h3>
+    <div class="sub">${f.length} de ${MISSOES.length} missões cumpridas</div>
+    <div class="grelha">${grelha}</div>
+  </section>`;
+
+  const b=document.getElementById("btnConcluir");
+  if(b) b.onclick=()=>concluir(Number(b.dataset.alvo));
+}
+
+/* ---------- concluir missão ---------- */
+function concluir(i){
+  marcarFeita(i);
+  const sticker=AUTOCOLANTES[i%AUTOCOLANTES.length];
+  const nome=store.get("nome")||"Agente";
+  const veu=document.createElement("div");
+  veu.className="veu";
+  veu.innerHTML=`<div class="card">
+    <span class="estrela-grande">${sticker}</span>
+    <h2>Missão concluída!</h2>
+    <p>Boa, Agente ${nome}! Ganhaste este autocolante para o teu mural. Não te esqueças de colar uma estrela no caderno também! ⭐</p>
+    <button class="btn-principal" id="btnFechar">Para o mural! 🎉</button>
+  </div>`;
+  document.body.appendChild(veu);
+  document.getElementById("btnFechar").onclick=()=>{ veu.remove(); render(); };
+}
+
+/* ---------- definições dos pais (com portão simples) ---------- */
+document.getElementById("btnGear").onclick=()=>{
+  const resposta=prompt("Zona dos pais 🔐\nQuanto é 7 × 8?");
+  if(resposta===null) return;
+  if(resposta.trim()!=="56"){ alert("Hmm… essa é uma das missões da Alice! 😉"); return; }
+  const acao=prompt("Escreve:\n1 – mudar a data de início\n2 – apagar tudo e recomeçar\n(qualquer outra tecla cancela)");
+  if(acao==="1"){
+    const nova=prompt("Nova data de início (AAAA-MM-DD):", store.get("inicio")||hojeISO());
+    if(nova&&/^\d{4}-\d{2}-\d{2}$/.test(nova.trim())){ store.set("inicio",nova.trim()); render(); }
+    else if(nova) alert("Formato inválido. Usa AAAA-MM-DD.");
+  } else if(acao==="2"){
+    if(confirm("Apagar o progresso todo?")){ store.del("nome");store.del("inicio");store.del("feitas"); render(); }
+  }
+};
+
+render();
+</script>
+</body>
+</html>
